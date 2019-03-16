@@ -6,6 +6,7 @@ body{
 	margin-bottom: 125px;
 }
 .navbar{
+	display: flex;
 	border-radius: 0;
 	background-color: #2C3A47;
 	border: none;
@@ -14,6 +15,14 @@ body{
 	color: #fff;
 	font-size: 2em;
 	margin: 10px 25px;
+}
+.navbar-login{
+	right: 15px;
+	margin: auto 25px auto auto;
+	font-size: 1.3em;
+}
+.navbar-login a, .navbar-login .fas{
+	color: #fff;
 }
 .heading, .success{
 	text-align: center;
@@ -60,7 +69,7 @@ hr{
 	padding: 8px 15px;
 	margin: 5px;
 }
-.delete{
+.delete, .create{
 	margin: 5px;
 	padding: 8px 15px;
 }
@@ -90,4 +99,8 @@ form p{
 	font-size: 1.5em;
 	text-align: center;
 	margin: auto;
+}
+.login{
+	display: flex;
+	flex-direction: column;
 }

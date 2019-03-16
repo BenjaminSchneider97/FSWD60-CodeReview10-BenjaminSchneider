@@ -27,6 +27,19 @@
 <body>
 	<div class="navbar">
 		<p>The big library</p>
+		<span class="navbar-login">
+			<a href="login.php" title="Zum Login">
+			<?php
+				if (isset($_SESSION['user'])) {
+					$displayName = $userRow['userFirstName']. " ". $userRow['userLastName'];
+					echo '<i class="fas fa-sign-out-alt"></i> '.$displayName;
+				}
+				else {
+					echo '<i class="fas fa-sign-in-alt"></i> Login';
+				}
+			?>
+			</a>
+		</span>
 	</div>
 	<div class="container">
 		<div class="heading">
@@ -36,16 +49,16 @@
 		<hr>
 		<?php
 
-			$sqlAuthor = mysqli_query($mysqli, "SELECT * FROM `author`");
+			$sqlAuthor = mysqli_query($mysqli, "SELECT * FROM `author` INNER JOIN `media` ON `author_id` = `fk_author_id` WHERE media_id = {$id}");
 			$rowAuthor = mysqli_fetch_array($sqlAuthor);
 
-			$sqlType = mysqli_query($mysqli, "SELECT * FROM `type`");
+			$sqlType = mysqli_query($mysqli, "SELECT * FROM `type` INNER JOIN `media` ON `type_id` = `fk_type_id` WHERE media_id = {$id}");
 			$rowType = mysqli_fetch_array($sqlType);
 
-			$sqlPublisher = mysqli_query($mysqli, "SELECT * FROM `publisher`");
+			$sqlPublisher = mysqli_query($mysqli, "SELECT * FROM `publisher` INNER JOIN `media` ON `publisher_id` = `fk_publisher_id` WHERE media_id = {$id}");
 			$rowPublisher = mysqli_fetch_array($sqlPublisher);
 
-			$sqlLibrary = mysqli_query($mysqli, "SELECT * FROM `library`");
+			$sqlLibrary = mysqli_query($mysqli, "SELECT * FROM `library` INNER JOIN `media` ON `library_id` = `fk_library_id` WHERE media_id = {$id}");
 			$rowLibrary = mysqli_fetch_assoc($sqlLibrary);
 
 			if($row["mediaStatus"] == 1){
