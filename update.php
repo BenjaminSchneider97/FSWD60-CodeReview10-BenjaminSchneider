@@ -85,8 +85,12 @@
 				?>
 
 			</select>
-			<input type="submit" name="update" value="Update">
+			<p></p>
+			<input class="btn btn-success" type="submit" name="update" value="UPDATE">
 		</form>
 	 	</div>
+ 	<div class="footer">
+ 		<p>Benjamin Schneider - CodeFactory 2019</p>
+ 	</div>
 </body>
 </html>

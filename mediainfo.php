@@ -36,7 +36,7 @@
 		<hr>
 		<?php
 
-			$sqlAuthor = mysqli_query($mysqli, "SELECT * FROM `media` WHERE media_id = {$id} INNER JOIN `author` ON fk_author_id = author(author_id)");
+			$sqlAuthor = mysqli_query($mysqli, "SELECT * FROM `author`");
 			$rowAuthor = mysqli_fetch_array($sqlAuthor);
 
 			$sqlType = mysqli_query($mysqli, "SELECT * FROM `type`");
@@ -63,6 +63,8 @@
 					<p>by: ". $rowAuthor["authorFirstName"]. " ". $rowAuthor["authorSurName"]. "</p>
 					<p>type: ". $rowType["typeName"]. "</p>
 					<p>Publisher: ". $rowPublisher["publisherName"]. "</p>
+					<hr>
+					<p>Description</p>
 					<p class='desc'>". $row["mediaDesc"]. "</p>
 					<a href='delete.php?id=". $row['media_id']."'><button class='btn btn-danger media' type='button'>Delete</button></a>
 					<a href='update.php?id=". $row['media_id']."'><button class='btn btn-primary media' type='button'>Edit</button></a>

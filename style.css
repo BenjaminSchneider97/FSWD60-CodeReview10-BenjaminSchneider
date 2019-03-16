@@ -15,7 +15,7 @@ body{
 	font-size: 2em;
 	margin: 10px 25px;
 }
-.heading{
+.heading, .success{
 	text-align: center;
 }
 hr{

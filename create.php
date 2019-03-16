@@ -14,7 +14,7 @@
 		$status = $_POST['status'];
 		$library = $_POST['library'];
 
-		$sql = "INSERT INTO `media`(`mediaTitle`, `mediaImage`, `mediaISBN`, `mediaDesc`, `mediaPrice`, `mediaStatus`, `fk_library_id`, `fk_type_id`, `fk_author_id`, `fk_publisher_id`) VALUES ('$title', '$img', '$isbn', '$desc', $price, $status, '$library', '$type', '$author', '$publisher');";
+		$sql = "INSERT INTO `media`(`mediaTitle`, `mediaImage`, `mediaISBN`, `mediaDesc`, `mediaPrice`, `mediaStatus`, `fk_library_id`, `fk_type_id`, `fk_author_id`, `fk_publisher_id`) VALUES ('$title', '$img', '$isbn', '$desc', '$price', $status, '$library', '$type', '$author', '$publisher');";
 
 		if($mysqli->query($sql) === TRUE) {
 		   header("Location: a_create.php");
@@ -90,9 +90,9 @@
 			<p>ISBN (If not a book insert 0)</p>
 			<input type="text" name="isbn" maxlength="25" required>
 			<p>Description</p>
-			<textarea name="desc" maxlength="500" reqired></textarea>
+			<textarea name="desc" maxlength="500" required></textarea>
 			<p>Price</p>
-			<input class="price" type="number" name="price" reqired>€
+			<input class="price" type="text" name="price" required>€
 			<p>Status</p>
 			<select name="status">
 				<option value="0">0) Not available</option>
