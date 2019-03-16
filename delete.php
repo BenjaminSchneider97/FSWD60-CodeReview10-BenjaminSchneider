@@ -1,26 +1,34 @@
 <?php 
 
-require_once 'db_connection.php';
+   ob_start();
+   session_start();
 
-if($_GET['id']) {
-   $id = $_GET['id'];
+   require_once 'db_connection.php';
 
-   $sql = "SELECT * FROM `media` WHERE media_id = {$id}";
-   $result = $mysqli->query($sql);
+   if (isset($_SESSION['user'])){
+   $res=mysqli_query($mysqli, "SELECT * FROM `users` WHERE user_id=". $_SESSION['user']. "");
+   $userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+   }  
 
-   $row = $result->fetch_array();
+   if($_GET['id']) {
+      $id = $_GET['id'];
 
-}
+      $sql = "SELECT * FROM `media` WHERE media_id = {$id}";
+      $result = $mysqli->query($sql);
 
-if(isset($_POST['delete'])) {
+      $row = $result->fetch_array();
 
-   $sql = "DELETE FROM `media` WHERE media_id = {$id}";
-   if($mysqli->query($sql) === TRUE) {
-      header("Location: a_delete.php");
-   } else {
-       echo "Error while updating record : ". $mysqli->error;
    }
-}
+
+   if(isset($_POST['delete'])) {
+
+      $sql = "DELETE FROM `media` WHERE media_id = {$id}";
+      if($mysqli->query($sql) === TRUE) {
+         header("Location: a_delete.php");
+      } else {
+          echo "Error while updating record : ". $mysqli->error;
+      }
+   }
 
 ?>
 

@@ -1,6 +1,14 @@
 <?php
 
-	include_once 'db_connection.php';
+	ob_start();
+	session_start();
+
+	require_once 'db_connection.php';
+
+	if (isset($_SESSION['user'])){
+	$res=mysqli_query($mysqli, "SELECT * FROM `users` WHERE user_id=". $_SESSION['user']. "");
+	$userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+	}	
 
 	if(isset($_POST['create'])){
 		$title = $_POST['title'];
@@ -43,6 +51,19 @@
 <body>
 	<div class="navbar">
 		<p>The big library</p>
+		<span class="navbar-login">
+			<a href="login.php" title="Zum Login">
+			<?php
+				if (isset($_SESSION['user'])) {
+					$displayName = $userRow['userFirstName']. " ". $userRow['userLastName'];
+					echo '<i class="fas fa-sign-out-alt"></i> '.$displayName;
+				}
+				else {
+					echo '<i class="fas fa-sign-in-alt"></i> Login';
+				}
+			?>
+			</a>
+		</span>
 	</div>
 	<div class="container">
 		<div class="heading">

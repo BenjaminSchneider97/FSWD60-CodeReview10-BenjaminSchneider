@@ -2,7 +2,13 @@
 
 	ob_start();
 	session_start();
+
 	require_once 'db_connection.php';
+
+	if (isset($_SESSION['user'])){
+	$res=mysqli_query($mysqli, "SELECT * FROM `users` WHERE user_id=". $_SESSION['user']. "");
+	$userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+	}
 
 	$emailError = "";
 	$passwordError = "";
@@ -66,6 +72,24 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<style>
+			.login{
+				display: flex;
+				flex-direction: column;
+				width: 35%;
+				margin: auto;
+			}
+			.field{
+				height: 50px;
+				margin: 15px 0;
+				outline: none;
+				border: none;
+				border-bottom: 1px solid black;
+			}
+			.btn-success{
+				height: 50px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="navbar">
@@ -94,17 +118,17 @@
 				if (isset($_SESSION['user'])) {
 					echo '
 					<form method="post">
-						<input type="submit" name="logout" value="Sign out">
+						<input class="btn btn-danger" type="submit" name="logout" value="Sign out">
 					</form>';
 				} else{
 					echo '
 					<form class="login" method="POST" accept-charset="utf-8">
 						<span><?php echo $errMSG ?></span>
-						<input type="text" name="userEmail" placeholder="Email">
+						<input class="field" type="text" name="userEmail" placeholder="Email">
 						<span><?php echo $emailError ?></span>
-						<input type="password" name="password" placeholder="Password">
+						<input class="field" type="password" name="password" placeholder="Password">
 						<span><?php echo $passwordError ?></span>
-						<input type="submit" name="login" value="LOGIN">
+						<input class="btn btn-success" type="submit" name="login" value="LOGIN">
 						<p>No account yet? <a href="register.php" title="register">Sign up here!</a></p>
 					</form>';
 			}

@@ -1,6 +1,14 @@
 <?php 
 
+	ob_start();
+	session_start();
+
 	require_once 'db_connection.php';
+
+	if (isset($_SESSION['user'])){
+	$res=mysqli_query($mysqli, "SELECT * FROM `users` WHERE user_id=". $_SESSION['user']. "");
+	$userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+	}	
 
 	if($_GET['id']) {
 		$id = $_GET['id'];
@@ -68,6 +76,14 @@
 				$status = "No";
 			}
 
+			$editbuttons = "";
+
+			if(isset($_SESSION['user'])){
+
+			$editbuttons = "<a href='delete.php?id=". $row['media_id']."'><button class='btn btn-danger media' type='button'>Delete</button></a>
+					<a href='update.php?id=". $row['media_id']."'><button class='btn btn-primary media' type='button'>Edit</button></a>";
+			}
+
 		echo "
 		<div class='container'>
 			<div class='row'>
@@ -87,8 +103,7 @@
 					<hr>
 					<p>Description</p>
 					<p class='desc'>". $row["mediaDesc"]. "</p>
-					<a href='delete.php?id=". $row['media_id']."'><button class='btn btn-danger media' type='button'>Delete</button></a>
-					<a href='update.php?id=". $row['media_id']."'><button class='btn btn-primary media' type='button'>Edit</button></a>
+					". $editbuttons. "
 				</div>
 			</div>
 		</div>";

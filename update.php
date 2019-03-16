@@ -1,6 +1,14 @@
 <?php 
 
+	ob_start();
+	session_start();
+
 	require_once 'db_connection.php';
+
+	if (isset($_SESSION['user'])){
+	$res=mysqli_query($mysqli, "SELECT * FROM `users` WHERE user_id=". $_SESSION['user']. "");
+	$userRow=mysqli_fetch_array($res, MYSQLI_ASSOC);
+	}	
 
 	if($_GET['id']) {
 		$id = $_GET['id'];
@@ -99,6 +107,7 @@
 
 			</select>
 			<p></p>
+			<?php echo "<a href='mediainfo.php?id=". $row['media_id']. "'><button class='btn btn-primary delete' type='button'>No go back</button></a>" ?>
 			<input class="btn btn-success" type="submit" name="update" value="UPDATE">
 		</form>
 	 	</div>

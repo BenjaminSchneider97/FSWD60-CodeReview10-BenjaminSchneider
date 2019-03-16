@@ -12,6 +12,19 @@
 <body>
 	<div class="navbar">
 		<p>The big library</p>
+		<span class="navbar-login">
+			<a href="login.php" title="Zum Login">
+			<?php
+				if (isset($_SESSION['user'])) {
+					$displayName = $userRow['userFirstName']. " ". $userRow['userLastName'];
+					echo '<i class="fas fa-sign-out-alt"></i> '.$displayName;
+				}
+				else {
+					echo '<i class="fas fa-sign-in-alt"></i> Login';
+				}
+			?>
+			</a>
+		</span>
 	</div>
 	<div class="container">
 		<a class="mainpageback" href="index.php"><i class="fas fa-arrow-left"></i>Back to main page</a>
