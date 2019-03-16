@@ -48,6 +48,13 @@
 			$sqlLibrary = mysqli_query($mysqli, "SELECT * FROM `library`");
 			$rowLibrary = mysqli_fetch_assoc($sqlLibrary);
 
+			if($row["mediaStatus"] == 1){
+				$status = "Yes";
+			}
+			else{
+				$status = "No";
+			}
+
 		echo "
 		<div class='container'>
 			<div class='row'>
@@ -63,6 +70,7 @@
 					<p>by: ". $rowAuthor["authorFirstName"]. " ". $rowAuthor["authorSurName"]. "</p>
 					<p>type: ". $rowType["typeName"]. "</p>
 					<p>Publisher: ". $rowPublisher["publisherName"]. "</p>
+					<p>Available: ". $status. "</p>
 					<hr>
 					<p>Description</p>
 					<p class='desc'>". $row["mediaDesc"]. "</p>

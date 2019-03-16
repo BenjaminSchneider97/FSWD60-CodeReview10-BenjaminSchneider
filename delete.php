@@ -45,8 +45,8 @@ if(isset($_POST['delete'])) {
       <hr>
       <form method="POST" accept-charset="utf-8">
          <h2>Are you sure you want to delete "<?php echo $row['mediaTitle'] ?>"? </h2>
-         <input class="btn btn-danger" type="submit" name="delete" value="Delete">
-         <?php echo "<a href='mediainfo.php?id=". $row['media_id']. "'><button class='btn btn-primary' type='button'>No go back</button></a>" ?>
+         <input class="btn btn-danger delete" type="submit" name="delete" value="Delete">
+         <?php echo "<a href='mediainfo.php?id=". $row['media_id']. "'><button class='btn btn-primary delete' type='button'>No go back</button></a>" ?>
       </form>
    </div>
    <div class="footer">

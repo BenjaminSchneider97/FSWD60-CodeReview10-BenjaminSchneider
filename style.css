@@ -57,6 +57,10 @@ hr{
 }
 .media{
 	float: right;
+	padding: 8px 15px;
+	margin: 5px;
+}
+.delete{
 	margin: 5px;
 	padding: 8px 15px;
 }

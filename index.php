@@ -24,7 +24,7 @@
 			<h1>Welcome to our library!</h1>
 		</div>
 		<div class="title">
-				<a href="create.php" title="Create new entry"><button class="btn btn-primary" type="submit" name ="create">Create new entry</button></a>
+				<a href="create.php" title="Create new entry"><button class="btn btn-primary create" type="submit" name ="create">Create new entry</button></a>
 		</div>
 
 		<?php 
