@@ -41,12 +41,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<style>
-		textarea{
-			width: 500px;
-			height: 200px;
-		}
-	</style>
 </head>
 <body>
 	<div class="navbar">
@@ -71,13 +65,13 @@
 		</div>
 		<a class="mainpageback" href="index.php"><i class="fas fa-arrow-left"></i>Back to main page</a>
 		<hr>
-		<form method="POST" accept-charset="utf-8">
+		<form class="updatemedia" method="POST" accept-charset="utf-8">
 			<p>Title</p>
-			<input type="text" name="title" maxlength="150" required>
+			<input class="field" type="text" name="title" maxlength="150" required>
 			<p>Media Image (url)</p>
-			<input type="text" name="img" maxlength="500" required>
+			<input class="field" type="text" name="img" maxlength="500" required>
 			<p>Type</p>
-			<select name="type">
+			<select class="field" name="type">
 				<?php
 				$sql = mysqli_query($mysqli, "SELECT * FROM `type`");
 
@@ -87,7 +81,7 @@
 				?>
 			</select>
 			<p>Publisher</p>
-			<select name="publisher">
+			<select class="field" name="publisher">
 				<?php
 
 				$sql = mysqli_query($mysqli, "SELECT * FROM `publisher`");
@@ -100,7 +94,7 @@
 
 			</select>
 			<p>Author</p>
-			<select name="author">
+			<select class="field" name="author">
 				<?php 
 				$sql = mysqli_query($mysqli, "SELECT * FROM `author`");
 				while($rowAuthor = mysqli_fetch_assoc($sql)){
@@ -109,18 +103,18 @@
 				?>
 			</select>
 			<p>ISBN (If not a book insert 0)</p>
-			<input type="text" name="isbn" maxlength="25" required>
+			<input class="field" type="text" name="isbn" maxlength="25" required>
 			<p>Description</p>
 			<textarea name="desc" maxlength="500" required></textarea>
 			<p>Price</p>
-			<input class="price" type="text" name="price" required>€
+			<input class="field" class="price" type="text" name="price" required>€
 			<p>Status</p>
-			<select name="status">
+			<select class="field" name="status">
 				<option value="0">0) Not available</option>
 				<option value="1">1) Available</option>
 			</select>
 			<p>Library</p>
-			<select name="library">
+			<select class="field" name="library">
 				<?php 
 				$sql = mysqli_query($mysqli, "SELECT * FROM `library`");
 				while($rowLibrary = mysqli_fetch_assoc($sql)){

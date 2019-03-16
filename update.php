@@ -51,6 +51,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>	
+	</style>
 </head>
 <body>
 	<div class="navbar">
@@ -75,11 +77,11 @@
 		</div>
 		<a class="mainpageback" href="index.php"><i class="fas fa-arrow-left"></i>Back to main page</a>
 		<hr>
-		<form method="POST" accept-charset="utf-8">
+		<form class="updatemedia" method="POST" accept-charset="utf-8">
 			<p>Title</p>
-			<input type="text" name="title" value=" <?php echo $row["mediaTitle"] ?> ">
+			<input class="field" type="text" name="title" value=" <?php echo $row["mediaTitle"] ?> ">
 			<p>Author</p>
-			<select name="author">
+			<select class="field" name="author">
 				<?php 
 
 				$sql = mysqli_query($mysqli, "SELECT * FROM `author`");
@@ -90,11 +92,11 @@
 				?>
 			</select>
 			<p>Price</p>
-			<input class="price" type="text" name="price" value =" <?php echo $row["mediaPrice"] ?>"> €
+			<input class="price field" type="text" name="price" value =" <?php echo $row["mediaPrice"] ?>">
 			<p>Description</p>
 			<textarea name="desc"> <?php echo $row["mediaDesc"] ?></textarea>
 			<p>Publisher</p>
-			<select name="publisher">
+			<select class="field" name="publisher">
 				<?php
 
 				$sql = mysqli_query($mysqli, "SELECT * FROM `publisher`");
