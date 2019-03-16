@@ -64,7 +64,7 @@
    <div class="container">
       <a class="mainpageback" href="index.php"><i class="fas fa-arrow-left"></i>Back to main page</a>
       <hr>
-      <form method="POST" accept-charset="utf-8">
+      <form class="centerpls" method="POST" accept-charset="utf-8">
          <h2>Are you sure you want to delete "<?php echo $row['mediaTitle'] ?>"? </h2>
          <?php echo "<a href='mediainfo.php?id=". $row['media_id']. "'><button class='btn btn-primary delete' type='button'>No go back</button></a>" ?>
          <input class="btn btn-danger delete" type="submit" name="delete" value="Delete">

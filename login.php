@@ -117,7 +117,7 @@
 			<?php 
 				if (isset($_SESSION['user'])) {
 					echo '
-					<form method="post">
+					<form class="centerpls" method="post">
 						<input class="btn btn-danger" type="submit" name="logout" value="Sign out">
 					</form>';
 				} else{

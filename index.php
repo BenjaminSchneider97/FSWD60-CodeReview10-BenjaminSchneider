@@ -44,7 +44,7 @@
 		<div class="heading">
 			<h1>Welcome to our library!</h1>
 		</div>
-		<a href="publishers.php" class="btn btn-primary">List publishers</a>
+		<a href="publishers.php" class="btn btn-primary create">List publishers</a>
 		<div class="title">
 			<?php  
 
